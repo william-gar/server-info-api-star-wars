@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/william-gar/server-info-api-star-wars/issues"
   },
-  "homepage": "https://github.com/william-gar/server-info-api-star-wars#readme"
+  "homepage": "https://github.com/william-gar/server-info-api-star-wars#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  }
 }
