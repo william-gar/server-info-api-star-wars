@@ -1,6 +1,8 @@
 let express = require("express");
 let cors = require("cors");
 let morgan = require("morgan");
+let peopleRouter = require("./routes/people.routes");
+let starshipsRouter = require("./routes/starships.routes");
 
 // Server Config
 
@@ -17,9 +19,19 @@ server.use(cors());
 server.use(morgan("dev"));
 
 // Connection
+server.use("/people", peopleRouter);
+server.use("/starships", starshipsRouter);
 
 server.get("/", (req, res) => {
-  return res.send("Request to GET /");
+  const obj = {
+    msg: "Welcome to the Server with Star Wars API",
+    routes: {
+      starships: "http://localhost:3001/starships",
+      people: "http://localhost:3001/people",
+    },
+  };
+
+  res.json(obj);
 });
 
 module.exports = server;
