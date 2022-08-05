@@ -10,10 +10,11 @@ let server = express();
 
 server.use(express.json());
 server.use("/", (req, res, next) => {
-  console.log("Mi propio Middleware");
+  console.log("Custom Middleware");
+  next();
 });
 server.use(cors());
-server.use(morgan("tiny"));
+server.use(morgan("dev"));
 
 // Connection
 
