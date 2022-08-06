@@ -1,12 +1,16 @@
 let { Router } = require("express");
 let charactersRouter = Router();
-const { getCharacters } = require("../controllers/characters.controllers");
+const {
+  getCharacters,
+  getAllCharacters,
+  postCharacter,
+} = require("../controllers/characters.controllers");
 
 charactersRouter.get("/", getCharacters);
 
-charactersRouter.get("/all");
+charactersRouter.get("/all", getAllCharacters);
 
-charactersRouter.post("/create");
+charactersRouter.post("/create", postCharacter);
 
 charactersRouter.put("/edit");
 
