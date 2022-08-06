@@ -1,7 +1,7 @@
 let axios = require("axios");
 let crypto = require("crypto");
 
-const API_URL_PEOPLE = "https://swapi.dev/api/people/";
+const API_URL_CHARACTERS = "https://swapi.dev/api/people/";
 let dataBase = [];
 
 const getCharacters = (req, res) => {
@@ -11,7 +11,7 @@ const getCharacters = (req, res) => {
 // GET
 const getAllCharacters = async (req, res, next) => {
   try {
-    const response = await axios.get(API_URL_PEOPLE);
+    const response = await axios.get(API_URL_CHARACTERS);
 
     const charactersApiAndDb = [...response.data.results, ...dataBase];
 

@@ -1,10 +1,15 @@
 let { Router } = require("express");
 let starshipsRouter = Router();
-const { getStarships } = require("../controllers/starships.controllers");
+const {
+  getStarships,
+  getQuantity,
+  filter,
+  name,
+} = require("../controllers/starships.controllers");
 
 starshipsRouter.get("/", getStarships);
 
-starshipsRouter.get("/allStarships/:quantity");
+starshipsRouter.get("/all", getQuantity);
 
 starshipsRouter.get("/filter");
 
