@@ -30,4 +30,25 @@ const getQuantity = (req, res) => {
   }
 };
 
-module.exports = { getStarships, getQuantity };
+const filterPassengers = (req, res) => {
+  const { passengers } = req.query;
+
+  if (passengers) {
+    try {
+      axios.get(API_URL_STARSHIPS).then((response) => {
+        const starships = response.data.results.filter(
+          (e) => e.passengers == passengers
+        );
+        return res.json({ msg: "Ok", info: starships });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    return res
+      .status(400)
+      .send({ msg: "The number of passengers was not passed" });
+  }
+};
+
+module.exports = { getStarships, getQuantity, filterPassengers };
