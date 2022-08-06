@@ -5,6 +5,7 @@ const {
   getAllCharacters,
   postCharacter,
   editCharacter,
+  deleteCharacter,
 } = require("../controllers/characters.controllers");
 
 charactersRouter.get("/", getCharacters);
@@ -15,6 +16,6 @@ charactersRouter.post("/create", postCharacter);
 
 charactersRouter.put("/edit", editCharacter);
 
-charactersRouter.delete("/deleteOne");
+charactersRouter.delete("/deleteOne", deleteCharacter);
 
 module.exports = charactersRouter;

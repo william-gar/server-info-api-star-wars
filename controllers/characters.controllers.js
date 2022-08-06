@@ -8,6 +8,7 @@ const getCharacters = (req, res) => {
   return res.send("I'm the character");
 };
 
+// GET
 const getAllCharacters = async (req, res, next) => {
   try {
     const response = await axios.get(API_URL_PEOPLE);
@@ -20,6 +21,7 @@ const getAllCharacters = async (req, res, next) => {
   }
 };
 
+// POST
 const postCharacter = async (req, res) => {
   const { character } = req.body;
 
@@ -42,6 +44,7 @@ const postCharacter = async (req, res) => {
     .json({ msg: `${character.name} character successfully created` });
 };
 
+// PUT
 const editCharacter = async (req, res) => {
   const { id, name, specie } = req.body;
 
@@ -63,9 +66,28 @@ const editCharacter = async (req, res) => {
     .json({ msg: `successfully modified ${name} character` });
 };
 
+// DELETE
+const deleteCharacter = async (req, res) => {
+  const { name } = req.body;
+
+  if (!name) return res.status(400).send({ msg: `Name is needed to remove` });
+
+  const search = dataBase.find((char) => char.name === name);
+  if (!search)
+    return res
+      .status(404)
+      .send({ msg: `The character ${name} was not found in the database` });
+  dataBase = dataBase.filter((char) => char.name !== name);
+
+  return res
+    .status(200)
+    .json({ msg: `The ${name} character has been successfully deleted` });
+};
+
 module.exports = {
   getCharacters,
   getAllCharacters,
   postCharacter,
   editCharacter,
+  deleteCharacter,
 };
