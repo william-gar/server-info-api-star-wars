@@ -4,7 +4,7 @@ const {
   getStarships,
   getQuantity,
   filterPassengers,
-  name,
+  getShipByName,
 } = require("../controllers/starships.controllers");
 
 starshipsRouter.get("/", getStarships);
@@ -13,6 +13,6 @@ starshipsRouter.get("/all", getQuantity);
 
 starshipsRouter.get("/filter", filterPassengers);
 
-starshipsRouter.get("/name");
+starshipsRouter.get("/name", getShipByName);
 
 module.exports = starshipsRouter;
