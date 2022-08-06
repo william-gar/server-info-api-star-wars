@@ -42,4 +42,30 @@ const postCharacter = async (req, res) => {
     .json({ msg: `${character.name} character successfully created` });
 };
 
-module.exports = { getCharacters, getAllCharacters, postCharacter };
+const editCharacter = async (req, res) => {
+  const { id, name, specie } = req.body;
+
+  if (!id || !name)
+    return res.status(400).send({ msg: "id or name not found" });
+
+  if (specie) return res.status(400).send({ msg: "specie cannot be edited" });
+
+  const search = dataBase.find((char) => char.id === id);
+  if (!search)
+    return res
+      .status(400)
+      .send({ msg: `${name} character not found in Data Base` });
+
+  search.name = name;
+
+  return res
+    .status(200)
+    .json({ msg: `successfully modified ${name} character` });
+};
+
+module.exports = {
+  getCharacters,
+  getAllCharacters,
+  postCharacter,
+  editCharacter,
+};
