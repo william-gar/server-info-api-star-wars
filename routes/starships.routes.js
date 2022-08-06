@@ -1,8 +1,7 @@
 let { Router } = require("express");
 let starshipsRouter = Router();
+const { getStarships } = require("../controllers/starships.controllers");
 
-starshipsRouter.get("/", (req, res) => {
-  return res.send("I am the ship");
-});
+starshipsRouter.get("/", getStarships);
 
 module.exports = starshipsRouter;
