@@ -8,6 +8,7 @@ const getStarships = (req, res) => {
   return res.send("I am the ship");
 };
 
+// Get all Starships or certain quantity
 const getQuantity = (req, res) => {
   const { quantity } = req.query;
 
@@ -31,6 +32,7 @@ const getQuantity = (req, res) => {
   }
 };
 
+// Filter Starships by number of passengers
 const filterPassengers = (req, res) => {
   const { passengers } = req.query;
 
@@ -52,6 +54,7 @@ const filterPassengers = (req, res) => {
   }
 };
 
+// Filter Starship by name
 const getShipByName = (req, res) => {
   const { name } = req.query;
 
